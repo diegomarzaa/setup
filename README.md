@@ -37,8 +37,6 @@ install git
 install tree
 install wget
 
-install gimp
-
 sudo apt upgrade -y
 sudo apt autoremove -y
 ```

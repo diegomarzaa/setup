@@ -158,6 +158,16 @@ fi
 # <<< conda initialize <<<
 
 
+# --------------------------------------- CUDA PARA TENSORFLOW ---------------------
+
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda
+export XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/lib/cuda
+
+
+
+
 
 
 # ------------------------------------Completion Styling - FZF COMPLETIONS -----------------
@@ -192,20 +202,6 @@ export EDITOR=gedit
 
 
 export PATH="$HOME/.local/bin:$PATH"
-
-
-
-
-########### SOUND
-
-zstyle ':bell' beep none
-# Play sound on completion failure
-zmodload zsh/complist
-zstyle ':completion:*' completer _complete _correct _approximate
-
-TRAPALRM() {
-    play -q ~/Downloads/TerminalSounds/hueehah.wav
-}
 
 
 # ------ CUSTOM PROMPT END OF ZSHRC FOR QUICK PROMPT ------------
