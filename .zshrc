@@ -160,12 +160,14 @@ fi
 
 # --------------------------------------- CUDA PARA TENSORFLOW ---------------------
 
-export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export CUDA_HOME=/usr/local/cuda
-export XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/lib/cuda
+export PATH=/usr/local/cuda-12.4/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH
 
 
+# -------------------------- PATHS
+
+export PATH=$PATH:/home/diego/.spicetify
+export PATH=$PATH:/home/diego/Documents/Matlab/bin
 
 
 
@@ -189,8 +191,6 @@ zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'  # color
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
 
-
-
 # ------------------------------ CUSTOM PROMPT ---------------------------------
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -209,6 +209,3 @@ export PATH="$HOME/.local/bin:$PATH"
 eval "$(zoxide init --cmd cd zsh)"
 (( ! ${+functions[p10k]} )) || p10k finalize
 
-
-export PATH=$PATH:/home/diego/.spicetify
-export PATH=$PATH:/home/diego/Documents/Matlab/bin
