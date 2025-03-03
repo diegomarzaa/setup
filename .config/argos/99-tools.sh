@@ -57,6 +57,7 @@ echo "--📜 Ver Log | bash='bash -c \"cat $LOG_PATH | zenity --text-info --titl
 
 # Simple Apps
 echo "---"
+echo "📁 Explorer | bash='spf' terminal=true"
 echo "📊 Matlab | bash='/home/diego/Documents/Matlab/bin/matlab -desktop &' terminal=false"
 echo "🔗 MATLAB Connector | bash='bash -c \"~/bin/MATLABConnector toggle\"' terminal=false"
 echo "📝 Gedit | bash=gedit terminal=false"

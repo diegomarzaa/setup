@@ -33,7 +33,9 @@ zinit light Aloxaf/fzf-tab
 
 
 
+# -------- ALIASES
 
+alias fd="fdfind"
 
 
 
@@ -181,15 +183,44 @@ if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
 fi
 
 # Include fzf default command
-export FZF_DEFAULT_COMMAND='find . -type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='find . -type d'
-
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'   # case-insensitive
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'  # color
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
+
+
+# ---------- FAST NAVIGATION TOOLS ------------
+# ---------------------------------------------
+
+# ---------- Fuzzy directory
+
+function cdd() {
+    cd "$(zoxide query -i -- $@)" || return
+}
+
+
+# ---------- Find files
+
+alias ff='fd --type f --hidden --follow --exclude .git'
+
+
+# ---------- Find and cd to directory
+
+fdc() {
+    local dir
+    dir=$(fd --type d --hidden --follow --exclude .git | fzf) && cd "$dir"
+}
+
+# ---------- Open file
+
+fdo() {
+    local file
+    file=$(fd --type f --hidden --follow --exclude .git | fzf) && xdg-open "$file"
+}
+
+
+
 
 # ------------------------------ CUSTOM PROMPT ---------------------------------
 
