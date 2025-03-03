@@ -46,8 +46,13 @@ echo "---"
 echo "✏️ Abrir Excalidraw | bash='bash -c \"xdg-open obsidian://adv-uri?vault=ObsidianNotes\\&commandid=obsidian-excalidraw-plugin%3Aexcalidraw-autocreate-popout\"' terminal=false"
 echo "🍅 Simple Pomo | bash='/home/diego/miniforge3/bin/python3 /home/diego/Documents/Proyectos/SimplePomo/__main__.py' terminal=false"
 
+
 DIVIDE_TRANSCRIBE_SCRIPT="/home/diego/.config/argos/scripts/split_transcribe.py"
-echo "🎵 Transcribir Audios | bash='/home/diego/miniforge3/bin/python3 \"$DIVIDE_TRANSCRIBE_SCRIPT\"' terminal=true"
+echo "Transcripciones"
+echo "--🎵 Transcribir Audios | bash='/home/diego/miniforge3/bin/python3 \"$DIVIDE_TRANSCRIBE_SCRIPT\"' terminal=true"
+LOG_PATH="/home/diego/.dotfiles/.config/argos/scripts/transcribe_log.txt"
+echo "--📜 Ver Log | bash='bash -c \"cat $LOG_PATH | zenity --text-info --title=\\\"Log de Transcripción\\\" --width=800 --height=600\"' terminal=false"
+
 
 
 # Simple Apps
