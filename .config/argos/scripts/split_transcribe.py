@@ -281,15 +281,6 @@ def main():
             save_transcription(all_transcriptions, output_txt)
             logging.info(f"Successfully completed transcription for {file}")
             
-            # Remove partial transcriptions
-            for part_file in glob.glob(os.path.join(dir_path, f"{base}_part*_transcription.txt")):
-                os.remove(part_file)
-            
-            # Also remove any temporary resuming file
-            resuming_file = os.path.join(dir_path, f"{base}_resuming.txt")
-            if os.path.exists(resuming_file):
-                os.remove(resuming_file)
-                
         except Exception as e:
             print(f"Error durante la transcripción de {file}: {e}")
             logging.error(f"Error processing {file}: {str(e)}")

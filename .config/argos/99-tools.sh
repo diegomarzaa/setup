@@ -45,7 +45,8 @@ echo "---"
 # Tools
 echo "✏️ Abrir Excalidraw | bash='bash -c \"xdg-open obsidian://adv-uri?vault=ObsidianNotes\\&commandid=obsidian-excalidraw-plugin%3Aexcalidraw-autocreate-popout\"' terminal=false"
 echo "🍅 Simple Pomo | bash='/home/diego/miniforge3/bin/python3 /home/diego/Documents/Proyectos/SimplePomo/__main__.py' terminal=false"
-
+echo "md -> LaTeX | bash='/home/diego/miniforge3/bin/python3 /home/diego/Downloads/latex-tests/script-python2.py' terminal=true"
+echo "PDF -> md | bash='code ~/Documents/Github/Professional/pdf-ocr-obsidian ~/Documents/Github/Professional/pdf-ocr-obsidian/pdf-markdown-ocr.ipynb' terminal=false"
 
 DIVIDE_TRANSCRIBE_SCRIPT="/home/diego/.config/argos/scripts/split_transcribe.py"
 echo "Transcripciones"
@@ -57,10 +58,10 @@ echo "--📜 Ver Log | bash='bash -c \"cat $LOG_PATH | zenity --text-info --titl
 
 # Simple Apps
 echo "---"
-echo "📁 Explorer | bash='spf' terminal=true"
 echo "📊 Matlab | bash='/home/diego/Documents/Matlab/bin/matlab -desktop &' terminal=false"
 echo "🔗 MATLAB Connector | bash='bash -c \"~/bin/MATLABConnector toggle\"' terminal=false"
 echo "📝 Gedit | bash=gedit terminal=false"
 echo "📂 Nautilus | bash=nautilus terminal=false"
+echo " Terminal Explorer | bash='spf' terminal=true"
 echo "---"
 
