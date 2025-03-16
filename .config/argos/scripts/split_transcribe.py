@@ -46,7 +46,7 @@ from datetime import datetime
 # VARIABLES PERSONALES
 API_KEY = "INSERTAR AQUI"
 LENGUAJE = "es"  # ca, en
-DEFAULT_FOLDER = "/home/diego/gdrive/Móvil/Grabaciones"
+DEFAULT_FOLDER = "/home/diego/gdrive/Móvil/Grabaciones Clase"
 LOG_FILE = os.path.expanduser("~/.dotfiles/.config/argos/scripts/transcribe_log.txt")
 
 # CONSTANTES
