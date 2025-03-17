@@ -10,9 +10,9 @@ echo "💻"
 echo "---"
 
 # Sync options
-echo "🔄 Github Sync"
-echo "--Obsidian Notes | bash='bash -c \"cd $REPO_PATH_OBSIDIAN && /home/diego/.config/argos/scripts/gitsync-script.sh $REPO_PATH_OBSIDIAN auto\"' terminal=false"
-echo "--.dotfiles | bash='bash -c \"cd $DOTF_PATH && /home/diego/.config/argos/scripts/gitsync-script.sh $DOTF_PATH ask\"' terminal=false"
+echo "🔄 Obsidian Notes Sync | bash='bash -c \"cd $REPO_PATH_OBSIDIAN && /home/diego/.config/argos/scripts/gitsync-script.sh $REPO_PATH_OBSIDIAN auto\"' terminal=false"
+
+echo "🔄 .dotfiles Sync | bash='bash -c \"cd $DOTF_PATH && /home/diego/.config/argos/scripts/gitsync-script.sh $DOTF_PATH ask\"' terminal=false"
 
 echo "---"
 
