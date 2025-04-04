@@ -45,14 +45,11 @@ echo "---"
 # Tools
 echo "✏️ Abrir Excalidraw | bash='bash -c \"xdg-open obsidian://adv-uri?vault=ObsidianNotes\\&commandid=obsidian-excalidraw-plugin%3Aexcalidraw-autocreate-popout\"' terminal=false"
 echo "🍅 Simple Pomo | bash='/home/diego/miniforge3/bin/python3 /home/diego/Documents/Proyectos/SimplePomo/__main__.py' terminal=false"
-echo "md -> LaTeX | bash='/home/diego/miniforge3/bin/python3 /home/diego/Downloads/latex-tests/script-python2.py' terminal=true"
-echo "PDF -> md | bash='code ~/Documents/Github/Professional/pdf-ocr-obsidian ~/Documents/Github/Professional/pdf-ocr-obsidian/pdf-markdown-ocr.ipynb' terminal=false"
+echo "🔀 PDF to Obsidian (OCR) | bash='code ~/Documents/Github/Professional/pdf-ocr-obsidian ~/Documents/Github/Professional/pdf-ocr-obsidian/pdf-markdown-ocr.ipynb' terminal=false"
+echo "🔀 Obsidian to LaTeX | bash='/home/diego/miniforge3/bin/python3 /home/diego/Downloads/latex-tests/script-python2.py' terminal=true"
 
 DIVIDE_TRANSCRIBE_SCRIPT="/home/diego/.config/argos/scripts/split_transcribe.py"
-echo "Transcripciones"
-echo "--🎵 Transcribir Audios | bash='/home/diego/miniforge3/bin/python3 \"$DIVIDE_TRANSCRIBE_SCRIPT\"' terminal=true"
-LOG_PATH="/home/diego/.dotfiles/.config/argos/scripts/transcribe_log.txt"
-echo "--📜 Ver Log | bash='bash -c \"cat $LOG_PATH | zenity --text-info --title=\\\"Log de Transcripción\\\" --width=800 --height=600\"' terminal=false"
+echo "🎵 Transcribir Audios | bash='/home/diego/miniforge3/bin/python3 \"$DIVIDE_TRANSCRIBE_SCRIPT\"' terminal=true"
 
 
 
