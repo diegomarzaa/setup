@@ -16,6 +16,10 @@ echo "🔄 .dotfiles Sync | bash='bash -c \"cd $DOTF_PATH && /home/diego/.config
 
 echo "---"
 
+# Backup
+
+echo "🔒 Hardrive Backup | bash='bash -c \"/home/diego/.config/argos/scripts/hardrive_backup.sh\"' terminal=true"
+
 
 # Sync Drive
 

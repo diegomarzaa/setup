@@ -170,6 +170,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH
 
 export PATH=$PATH:/home/diego/.spicetify
 export PATH=$PATH:/home/diego/Documents/Matlab/bin
+export PATH=~/.npm-global/bin:$PATH
 
 
 
