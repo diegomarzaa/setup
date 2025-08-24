@@ -1,10 +1,9 @@
 # dotfiles
 
 ```
-git clone github-diegomarzaa:diegomarzaa/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-stow .
-cd scripts
+git clone github-diegomarzaa:diegomarzaa/setup.git ~/setup
+cd ~/setup/dotfiles
+stow -d /home/diego/setup/dotfiles -t ~ bash dunst argos zsh
 ```
 
 ## Backups
