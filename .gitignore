@@ -1,0 +1,8 @@
+# .gitignore (public repo)
+/dotfiles/.ssh/
+/dotfiles/.gnupg/
+/dotfiles/secrets/
+*.pem
+*.key
+*.secret
+.env

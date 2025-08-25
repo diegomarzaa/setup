@@ -6,14 +6,14 @@ cd ~/setup/dotfiles
 stow -d /home/diego/setup/dotfiles -t ~ bash dunst argos zsh
 ```
 
-## Backups
+# Backups
 
 ```
 conda activate base
 conda env export > ../backups/base.yml
 ```
 
-## Restores
+# Restores
 
 APT
 
@@ -64,7 +64,7 @@ sudo apt update
 sudo apt install -y code
 ```
 
-## Pendientes / Testear
+# Pendientes / Testear
 
 - [ ] git
 - [ ] zsh
