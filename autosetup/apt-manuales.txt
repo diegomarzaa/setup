@@ -1,0 +1,14 @@
+autofirma
+curl
+discord
+ffmpeg
+fzf
+gedit
+git
+git-crypt
+gnupg
+gpg-agent
+openssh-server
+openssl
+stow
+zsh
