@@ -10,31 +10,46 @@ echo "✅ Guardado de instalaciones apt/snap/flatpak completado."
 # Extensiones Names
 gnome-extensions list --enabled > ./lista_extensiones_gnome.txt
 
-# Gnome Config + extensions config
+echo "✅ Guardado de extensiones de GNOME completado."
+
+# 1) All - Gnome Config + extensions config
 dconf dump / > ./lista_configuracion_gnome_all.dconf
 
+# 2) Selective
 OUTPUT_FILE="./lista_configuracion_gnome_relevantes.dconf"
 
-# 1. Apariencia (Tema, iconos, fuentes, modo oscuro)
-dconf dump /org/gnome/desktop/interface/ > "$OUTPUT_FILE"
+# Array con todas las rutas de dconf que quieres respaldar.
+# Añade o quita las que necesites.
+PATHS_TO_BACKUP=(
+    "/org/gnome/desktop/interface/"
+    "/org/gnome/desktop/peripherals/"
+    "/org/gnome/desktop/wm/preferences/"
+    "/org/gnome/mutter/"
+    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/"
+    "/org/gnome/desktop/wm/keybindings/"
+    "/org/gnome/shell/extensions/dash-to-dock/"
+    "/org/gnome/shell/extensions/dash-to-panel/"
+    "/org/gnome/shell/extensions/gestureImprovements/"
+    "/org/gnome/shell/extensions/gsconnect/"
+    "/org/gnome/shell/extensions/just-perfection/"
+    "/org/gnome/shell/extensions/pano/"
+)
 
-# Perifericos
-dconf dump /org/gnome/desktop/peripherals/ >> "$OUTPUT_FILE"
+echo "📝 Guardando configuraciones selectivas de GNOME en $OUTPUT_FILE"
 
-# 2. Comportamiento de ventanas y espacios de trabajo
-dconf dump /org/gnome/desktop/wm/preferences/ >> "$OUTPUT_FILE"
-dconf dump /org/gnome/mutter/ >> "$OUTPUT_FILE"
+# Empezamos con un archivo vacío.
+> "$OUTPUT_FILE"
 
-# 3. Atajos de teclado personalizados
-dconf dump /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ >> "$OUTPUT_FILE"
-dconf dump /org/gnome/desktop/wm/keybindings/ >> "$OUTPUT_FILE"
+# Iteramos sobre cada ruta del array
+for path in "${PATHS_TO_BACKUP[@]}"; do
+    # 1. Preparamos el encabezado eliminando la barra inicial y final
+    header=$(echo "$path" | sed 's/^\///' | sed 's/\/$//')
 
-# 4. Configuraciones de extensiones específicas (Añade las que uses)
-dconf dump /org/gnome/shell/extensions/dash-to-dock/ >> "$OUTPUT_FILE"
-dconf dump /org/gnome/shell/extensions/dash-to-panel/ >> "$OUTPUT_FILE"
-dconf dump /org/gnome/shell/extensions/gestureImprovements/ >> "$OUTPUT_FILE"
-dconf dump /org/gnome/shell/extensions/gsconnect/ >> "$OUTPUT_FILE"
-dconf dump /org/gnome/shell/extensions/just-perfection/ >> "$OUTPUT_FILE"
-dconf dump /org/gnome/shell/extensions/pano/ >> "$OUTPUT_FILE"
+    # 2. Escribimos el encabezado de sección correcto en el archivo
+    echo -e "\n[$header]" >> "$OUTPUT_FILE"
+
+    # 3. Hacemos el volcado, eliminamos el encabezado inútil '[/]' y lo añadimos al archivo
+    dconf dump "$path" | grep -v '^\[/\]$' >> "$OUTPUT_FILE"
+done
 
 echo "✅ Volcado total y selectivo de dconf completado."
