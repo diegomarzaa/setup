@@ -6,3 +6,5 @@
 *.key
 *.secret
 .env
+
+**/.docker/buildx/ y **/.docker/*.lock

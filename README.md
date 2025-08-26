@@ -1,3 +1,5 @@
+WARNING!!!!!!!!! README DESACTUALIZADO, SE ACTUALIZARÁ CUANDO ESTÉ TODO CLARO, POR AHORA NADA
+
 # dotfiles
 
 ```
@@ -14,31 +16,6 @@ conda env export > ../backups/base.yml
 ```
 
 # Restores
-
-APT
-
-```
-sudo apt update && sudo apt full-upgrade -y
-
-function install {
-  which $1 &> /dev/null
-
-  if [ $? -ne 0 ]; then
-    echo "Installing: ${1}..."
-    sudo apt install -y $1
-  else
-    echo "Already installed: ${1}"
-  fi
-}
-
-install curl
-install git
-install tree
-install wget
-
-sudo apt upgrade -y
-sudo apt autoremove -y
-```
 
 Conda
 
