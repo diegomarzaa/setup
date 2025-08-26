@@ -1,85 +1,213 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# ==============================================================================
+#                            PRE-INITIALIZATION
+#
+# This section contains code that must run at the very beginning of the Zsh
+# startup process for features like the instant prompt.
+# ==============================================================================
+
+# Enable Powerlevel10k instant prompt.
+# This must stay at the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# ZINIT
+
+
+# ==============================================================================
+#                                       INBOX
+#
+# Fast changes added to this section, pending to organise them later.
+# ==============================================================================
+
+
+
+
+# ==============================================================================
+#                            PLUGIN MANAGER (ZINIT)
+#
+# Sets up the Zinit plugin manager, which handles loading all other tools.
+# ==============================================================================
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# ==============================================================================
+#                            PLUGINS
+#
+# All plugins are loaded here using Zinit.
+# ==============================================================================
 
-# -------------------- PLUGINS --------------------
-# Powerlevel10k
+# (P10k) Powerlevel10k Theme
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# Hihglighting
+# (Highlighting) Syntax highlighting for the command line
 zinit light zsh-users/zsh-syntax-highlighting
 
-# Load completions
-zinit light zsh-users/zsh-completions
-autoload -U compinit && compinit
-
-# Autosuggestions
+# (Autosuggestions) Fish-like suggestions based on history
 zinit light zsh-users/zsh-autosuggestions
 
-# FZF
+# (Completions) Additional completion definitions for Zsh
+zinit light zsh-users/zsh-completions
+# Initialize the completions system
+autoload -U compinit && compinit
+
+# (FZF-Tab) Replace Zsh's default completion selection with fzf
 zinit light Aloxaf/fzf-tab
 
+# Extra
 
 
+# ==============================================================================
+#                            ENVIRONMENT VARIABLES
+#
+# Centralized location for all `export` statements, including PATH.
+# ==============================================================================
+
+# Set the default editor
+export EDITOR=gedit
+
+# Consolidated PATH modifications
+# The order is important: paths added first are checked first.
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/Documents/Matlab/bin:$PATH"
+export PATH="$HOME/.spicetify:$PATH"
+
+# CUDA for TensorFlow/ML
+export PATH="/usr/local/cuda-12.4/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH"
 
 
-# -------- ALIASES
+# ==============================================================================
+#                            SHELL HISTORY
+#
+# Configuration for Zsh's command history.
+# ==============================================================================
 
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=5000
+setopt APPEND_HISTORY         # Append to history file, don't overwrite
+setopt HIST_IGNORE_ALL_DUPS   # If a new command is a duplicate, remove the older one
+setopt HIST_IGNORE_SPACE      # Don't save commands that start with a space
+setopt HIST_SAVE_NO_DUPS      # Don't write duplicate consecutive events to the history file
+setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first when trimming history
+
+
+# ==============================================================================
+#                            SHELL OPTIONS
+#
+# General Zsh behavior enhancements.
+# ==============================================================================
+setopt AUTO_CD              # If you type a directory name, cd into it
+
+# ==============================================================================
+#                            ALIASES
+#
+# All command aliases are defined here.
+# ==============================================================================
+
+# --- Navigation ---
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# General aliases
 alias fd="fdfind"
 
+# Fast navigation aliases
+alias ff='fd --type f --hidden --follow --exclude .git'
 
+# Source external alias file if it exists
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
+# ==============================================================================
+#                            KEYBINDINGS
+#
+# Custom keybindings for Zsh's line editor (ZLE).
+# ==============================================================================
 
+bindkey -e # Use Emacs keybindings
 
-# ----------------------------------- HISTORY SETTING ----------------------------------
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=5000
-SAVEHIST=$HISTSIZE
-HISTFILE=~/.zsh_history
-HISTDUP=erase
-setopt appendhistory
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt hist_save_no_dups
-
-
-
-# ------------------------------- CUSTOM KEYBINDINGS -------------------------------------
-# KEYBINDINGS
-bindkey -e
+# History search with arrow keys and Ctrl+P/N
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
-bindkey '^[[1;5C' forward-word           # Ctrl + → para avanzar una palabra
-bindkey '^[[1;5D' backward-word          # Ctrl + ← para retroceder una palabra
 
+# Word navigation with Ctrl + Arrow Keys
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
 
+# Edit the current command line in $EDITOR (Ctrl+X, Ctrl+E)
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
 
-# --------------------- ALIASES ----------------------
+# ==============================================================================
+#                            CUSTOM FUNCTIONS & TOOLS
+#
+# Custom helper functions and complex tool configurations.
+# For even better organization, you could move these to a separate file
+# (e.g., ~/.zshrc_functions) and `source` it here.
+# ==============================================================================
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+function extract() {
+    if [ -z "$1" ]; then
+        echo "Usage: extract <file>"
+    else
+        if [ -f "$1" ]; then
+            case "$1" in
+                *.tar.bz2)  tar xjf "$1"    ;;
+                *.tar.gz)   tar xzf "$1"    ;;
+                *.bz2)      bunzip2 "$1"    ;;
+                *.rar)      unrar x "$1"    ;;
+                *.gz)       gunzip "$1"     ;;
+                *.tar)      tar xf "$1"     ;;
+                *.tbz2)     tar xjf "$1"    ;;
+                *.tgz)      tar xzf "$1"    ;;
+                *.zip)      unzip "$1"      ;;
+                *.Z)        uncompress "$1" ;;
+                *.7z)       7z x "$1"       ;;
+                *)          echo "'$1' cannot be extracted via extract()" ;;
+            esac
+        else
+            echo "'$1' is not a valid file"
+        fi
+    fi
+}
 
+# ---------- Fast Navigation Tools ----------
 
-# ---------------------------------------- ROS2 --------------------------------------
+# Fuzzy find a directory and cd into it (requires zoxide)
+function cdd() {
+    cd "$(zoxide query -i -- $@)" || return
+}
 
+# Find a directory with `fd` and `fzf`, then cd into it
+fdc() {
+    local dir
+    dir=$(fd --type d --hidden --follow --exclude .git | fzf) && cd "$dir"
+}
+
+# Find a file with `fd` and `fzf`, then open it with `xdg-open`
+fdo() {
+    local file
+    file=$(fd --type f --hidden --follow --exclude .git | fzf) && xdg-open "$file"
+}
+
+function j() {
+    cd "$(zoxide query -l | fzf)"
+}
+
+# ---------- ROS2 Environment Management ----------
+
+# Function to source the ROS2 environment and set up aliases/completions
 ros2s() {
     echo "\033[1;36mSourceando ROS2 Humble...\033[0m"
     echo -e "\033[1;32m\tsource /opt/ros/humble/setup.zsh\033[0m"
@@ -119,26 +247,32 @@ ros2s() {
     echo -e "\033[1;32m\tDOMAIN UNSETEADO\033[0m"
 }
 
+# ==============================================================================
+#                            TOOL-SPECIFIC CONFIGURATIONS
+#
+# Configuration for specific plugins and tools like FZF.
+# ==============================================================================
 
-function chpwd() {
-    if [[ "$PWD" == "$HOME/Documents/Universidad/3rCurso/IR2121-ROBOTICA-MOBIL" || "$PWD" == "$HOME/Documents/Universidad/3rCurso/IR2121-ROBOTICA-MOBIL/"* ]]; then
-        if [[ -z "$ROS2_SOURCEADO" ]]; then
-            ros2s
-            export ROS2_SOURCEADO=1
-        fi
-    else
-        unset ROS2_SOURCEADO
-    fi
-}
+# FZF keybindings and fuzzy completion
+if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+    source /usr/share/doc/fzf/examples/key-bindings.zsh
+fi
+
+# Zsh completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'   # Case-insensitive completion
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'  # Colorize completions
+zstyle ':completion:*' menu no                          # Do not use menu completion
+
+# FZF-Tab completion preview settings
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
 
 
-# -------------------------- APPS ----------------
-export PATH=$PATH:/home/diego/.spicetify
-
-
-
-
-# ---------------------------------------- CONDA -----------------------
+# ==============================================================================
+#                       FINAL INITIALIZATION & AUTO-GENERATED
+#
+# This code runs last. It includes auto-generated blocks from installers
+# and final setup commands for the prompt.
+# ==============================================================================
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -159,85 +293,12 @@ if [ -f "/home/diego/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+# Initialize Zoxide (must be after Zsh's options are set)
+eval "$(zoxide init --cmd cd zsh)"
 
-# --------------------------------------- CUDA PARA TENSORFLOW ---------------------
-
-export PATH=/usr/local/cuda-12.4/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH
-
-
-# -------------------------- PATHS
-
-export PATH=$PATH:/home/diego/.spicetify
-export PATH=$PATH:/home/diego/Documents/Matlab/bin
-export PATH=~/.npm-global/bin:$PATH
-
-
-
-
-# ------------------------------------Completion Styling - FZF COMPLETIONS -----------------
-
-
-# Setup fzf
-if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-    source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
-
-# Include fzf default command
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'   # case-insensitive
-zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'  # color
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
-
-
-# ---------- FAST NAVIGATION TOOLS ------------
-# ---------------------------------------------
-
-# ---------- Fuzzy directory
-
-function cdd() {
-    cd "$(zoxide query -i -- $@)" || return
-}
-
-
-# ---------- Find files
-
-alias ff='fd --type f --hidden --follow --exclude .git'
-
-
-# ---------- Find and cd to directory
-
-fdc() {
-    local dir
-    dir=$(fd --type d --hidden --follow --exclude .git | fzf) && cd "$dir"
-}
-
-# ---------- Open file
-
-fdo() {
-    local file
-    file=$(fd --type f --hidden --follow --exclude .git | fzf) && xdg-open "$file"
-}
-
-
-
-
-# ------------------------------ CUSTOM PROMPT ---------------------------------
-
+# Load Powerlevel10k theme configuration.
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
-# Default editor
-export EDITOR=gedit
-
-
-export PATH="$HOME/.local/bin:$PATH"
-
-
-# ------ CUSTOM PROMPT END OF ZSHRC FOR QUICK PROMPT ------------
-
-eval "$(zoxide init --cmd cd zsh)"
+# [Improvement] Finalize Powerlevel10k. Recommended for instant prompt.
 (( ! ${+functions[p10k]} )) || p10k finalize
-

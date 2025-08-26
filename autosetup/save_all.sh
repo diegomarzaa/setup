@@ -72,3 +72,10 @@ for path in "${PATHS_TO_BACKUP[@]}"; do
 done
 
 echo "✅ Volcado selectivo de dconf completado."
+
+# --- Guardado de Configuraciones de Sistema ---
+# echo "---"
+# echo "💾 Llamando al script de guardado de configuraciones de sistema..."
+# "$(dirname "$0")/save_system_configs.sh"
+
+echo "🎉 ¡Todo guardado con éxito!"```

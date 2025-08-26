@@ -43,7 +43,17 @@ echo "🎨 Cargando la configuración de GNOME..."
 # (cd autosetup && ./load_config_gnome.sh)    
 # No va bien, hay que mejorarlo para que save_all.sh lo exporte bien, con los full paths
 
-# PASO 5: Tareas post-instalación
+# PASO 5: Restaurar configuraciones de sistema
+echo "🔩 Restaurando configuraciones de sistema..."
+read -p "❓ ¿Quieres restaurar configuraciones de sistema como Redes, Bluetooth y fstab? (s/N) " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Ss]$ ]]; then
+    (cd autosetup && ./load_system_configs.sh)
+else
+    echo "-> Omitiendo la restauración de configuraciones de sistema."
+fi
+
+# PASO 6: Tareas post-instalación (antes era el 5)
 echo "🔧 Realizando tareas finales..."
 # Shell por defecto a Zsh
 if [ -f /usr/bin/zsh ]; then
