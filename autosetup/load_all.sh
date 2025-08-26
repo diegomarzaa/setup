@@ -6,14 +6,14 @@ set -e
 # sudo apt update && sudo apt install -y ansible git curl flatpak snapd gnome-shell-extension-manager
 
 # 2) Snap & Flatpak & APT
-./install-apt.sh
-./install-snaps.sh
-./install-flatpaks.sh
+./load_apt.sh
+./load_snaps.sh
+./load_flatpaks.sh
 
 # 3) GNOME
 # TODO
-./install-extensions.sh          # o copiar de dotfiles/gnome_shell_extensions tal cual (peligroso si actualizo de 22.04 a 24.04)
-./load-configuration-gnome.sh
+./load_install_extensions.sh          # o copiar de dotfiles/gnome_shell_extensions tal cual (peligroso si actualizo de 22.04 a 24.04)
+./load_config_gnome.sh
 
 # 4) Dotfiles
 # TODO

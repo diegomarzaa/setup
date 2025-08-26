@@ -7,11 +7,11 @@ window-height=661
 window-width=591
 
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/org/gnome/desktop/wm/preferences/focus-new-windows'
-saved-view='/org/gnome/desktop/wm/'
-window-height=500
+saved-pathbar-path='/org/gnome/tweaks/'
+saved-view='/org/gnome/tweaks/'
+window-height=565
 window-is-maximized=false
-window-width=540
+window-width=1076
 
 [com/mattjakeman/ExtensionManager]
 last-used-version='0.3.0'
@@ -74,7 +74,7 @@ video-x-resolution=1280
 video-y-resolution=720
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='info-overview'
 
 [org/gnome/deja-dup]
 backend='drive'
@@ -130,7 +130,7 @@ xkb-options=@as []
 
 [org/gnome/desktop/interface]
 clock-show-seconds=true
-clock-show-weekday=false
+clock-show-weekday=true
 color-scheme='prefer-dark'
 cursor-size=24
 cursor-theme='DMZ-White'
@@ -467,7 +467,7 @@ active-plugins=['modelines', 'docinfo', 'spell', 'openlinks', 'sort', 'filebrows
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/diego/.config/dconf'
+virtual-root='file:///home/diego/.local/share/gnome-shell/extensions/argos@pew.worldwidemann.com'
 
 [org/gnome/gedit/preferences/editor]
 auto-save=false
@@ -617,7 +617,7 @@ enabled-connections=@as []
 command-history=['nautilus', 'gnome-session-properties', 'r', 'ls', 'python3', 'pomo', 'mkdir -p ~/Downloads/Ppepe', 'rofi -show window', 'rofi -show drun']
 disable-user-extensions=false
 disabled-extensions=['netspeedsimplified@prateekmedia.extension', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com', 'ubuntu-dock@ubuntu.com', 'window-list@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['smile-extension@mijorus.it', 'CustomizeClockOnLockScreen@pratap.fastmail.fm', 'pano@elhan.io', 'gestureImprovements@gestures', 'gsconnect@andyholmes.github.io', 'compiz-windows-effect@hermes83.github.com', 'extension-list@tu.berry', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'ubuntu-appindicators@ubuntu.com', 'argos@pew.worldwidemann.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'x11gestures@joseexposito.github.io', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'hidetopbar@mathieu.bidon.ca', 'dash-to-panel@jderose9.github.com', 'just-perfection-desktop@just-perfection']
+enabled-extensions=['smile-extension@mijorus.it', 'CustomizeClockOnLockScreen@pratap.fastmail.fm', 'pano@elhan.io', 'gestureImprovements@gestures', 'gsconnect@andyholmes.github.io', 'compiz-windows-effect@hermes83.github.com', 'extension-list@tu.berry', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'ubuntu-appindicators@ubuntu.com', 'native-window-placement@gnome-shell-extensions.gcampax.github.com', 'x11gestures@joseexposito.github.io', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'hidetopbar@mathieu.bidon.ca', 'dash-to-panel@jderose9.github.com', 'just-perfection-desktop@just-perfection', 'argos@pew.worldwidemann.com']
 favorite-apps=['brave-browser.desktop', 'obsidian.desktop', 'code.desktop', 'github-desktop.desktop', 'org.gnome.Nautilus.desktop', 'localsend_localsend.desktop', 'appimagekit_a6a8dc136aa089659fbaa6a14cf36d14-Join_Desktop.desktop']
 had-bluetooth-devices-setup=true
 welcome-dialog-last-shown-version='42.9'

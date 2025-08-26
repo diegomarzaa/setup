@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-apt-mark showmanual > ./lista_paquetes_apt.txt
+apt-mark showmanual > ./lista_paquetes_apt_all.txt
 snap list --all > ./lista_paquetes_snap.txt
 flatpak list --app --columns=application > ./lista_paquetes_flatpak.txt
 
