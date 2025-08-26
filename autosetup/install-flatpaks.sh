@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 while read -r app; do
   flatpak install -y flathub "$app"
-done < flatpaks.txt
+done < lista_paquetes_flatpak.txt

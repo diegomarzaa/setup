@@ -3,4 +3,4 @@
 while read -r uuid; do
   gnome-extensions install "$uuid" || true
   gnome-extensions enable "$uuid" || true
-done < extensions.txt
+done < lista_extensiones_gnome.txt

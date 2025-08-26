@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-dconf load / < .configuracion_gnome.dconf
+dconf load / < ./lista_configuracion_gnomeconfiguracion_gnome.dconf

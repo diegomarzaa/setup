@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 sudo apt update
-xargs -a apt-manuales-relevantes.txt sudo apt install -y
+xargs -a lista_paquetes_apt_relevantes.txt sudo apt install -y
