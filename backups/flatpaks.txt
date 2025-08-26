@@ -1,3 +1,0 @@
-com.github.joseexposito.touche
-com.stremio.Stremio
-org.gimp.GIMP
