@@ -40,7 +40,8 @@ stow --verbose=2 -d ~/setup/secrets -t ~ docker git gnupg kdeconnect rclone remm
 
 # PASO 4: Aplicar configuración de GNOME
 echo "🎨 Cargando la configuración de GNOME..."
-(cd autosetup && ./load_config_gnome.sh)
+# (cd autosetup && ./load_config_gnome.sh)    
+# No va bien, hay que mejorarlo para que save_all.sh lo exporte bien, con los full paths
 
 # PASO 5: Tareas post-instalación
 echo "🔧 Realizando tareas finales..."

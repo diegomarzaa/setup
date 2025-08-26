@@ -467,7 +467,7 @@ active-plugins=['modelines', 'docinfo', 'spell', 'openlinks', 'sort', 'filebrows
 [org/gnome/gedit/plugins/filebrowser]
 root='file:///'
 tree-view=true
-virtual-root='file:///home/diego/.local/share/gnome-shell/extensions/argos@pew.worldwidemann.com'
+virtual-root='file:///home/diego'
 
 [org/gnome/gedit/preferences/editor]
 auto-save=false
@@ -537,7 +537,7 @@ search-filter-time-type='last_modified'
 search-view='list-view'
 
 [org/gnome/nautilus/window-state]
-initial-size=(1294, 878)
+initial-size=(1173, 887)
 maximized=false
 sidebar-width=200
 
