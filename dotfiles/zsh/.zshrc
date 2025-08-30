@@ -116,6 +116,9 @@ alias ....="cd ../../.."
 
 # General aliases
 alias fd="fdfind"
+alias c='clear'
+alias h='history'
+alias python='python3'
 
 # Fast navigation aliases
 alias ff='fd --type f --hidden --follow --exclude .git'
