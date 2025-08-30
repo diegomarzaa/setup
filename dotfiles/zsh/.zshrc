@@ -267,6 +267,39 @@ zstyle ':completion:*' menu no                          # Do not use menu comple
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
 
 
+# --- Quick Help (prints once per interactive session) -------------------------
+# Safe with p10k Instant Prompt: runs via a precmd hook (post-init).
+if [[ $- == *i* && -z ${ZSH_MOTD_DISABLE:-} ]]; then
+  autoload -Uz add-zsh-hook
+
+  _zsh_quick_help() {
+    local b='%B' n='%b' g='%F{244}' c='%F{81}' y='%F{220}' r='%F{203}' w='%F{255}' reset='%f%b'
+    print -P ""
+    print -P "${c}┏━━━━━━━━━━━━━━━━━━━━ ${b}Zsh Quick Help${n} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}"
+    print -P "${w}• Nav:${reset}  ${y}.. ... ....${reset}  ${g}cd <term>${reset} (zoxide jump)  ${g}j${reset} list  ${g}cdd${reset} fuzzy cd"
+    print -P "${w}• Find:${reset} ${g}ff <pat>${reset} files  ${g}fdc${reset} pick dir  ${g}fdo${reset} open file"
+    print -P "${w}• Edit:${reset} ${g}Ctrl-X Ctrl-E${reset} edit current cmd in \$EDITOR"
+    print -P "${w}• Files:${reset} ${g}extract <file>${reset} (zip, tar.gz, 7z, …)"
+    print -P "${w}• ROS2:${reset} ${g}ros2s${reset} env; aliases: ${g}ros2src${reset}, ${g}src${reset}"
+    print -P "${w}• Prompt:${reset} ${g}p10k configure${reset}   ${w}Conda:${reset} ${g}conda activate <env>${reset}"
+    print -P "${w}• Help:${reset} ${g}helpme${reset} show again"
+    print -P "${c}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}"
+  }
+
+  helpme() { _zsh_quick_help }
+
+  _print_quick_help_once() {
+    [[ -n ${ZSH_MOTD_SHOWN:-} ]] && return
+    ZSH_MOTD_SHOWN=1
+    _zsh_quick_help
+    add-zsh-hook -D precmd _print_quick_help_once >/dev/null 2>&1
+  }
+
+  add-zsh-hook precmd _print_quick_help_once
+fi
+# -------------------------------------------------------------------------------
+
+
 # ==============================================================================
 #                       FINAL INITIALIZATION & AUTO-GENERATED
 #
