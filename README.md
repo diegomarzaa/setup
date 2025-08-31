@@ -11,24 +11,28 @@ Ahora puedo copiar y pegar la carpeta setup/ desde la sd, ya que no está encrip
 
 2.  **Restaurar Clave GPG Privada**
 
-    Desde la sd (directamente, en setup/) o disco duro (ver [Restauración de Archivos Personales](#fase-2-restauración-de-archivos-personales)), tenerlo redundante pues es muy importante no perder esto, es para que git-crypt me reconozca.
+    - sd (directamente, en setup/) 
+    - disco duro (ver [Restauración de Archivos Personales](#fase-2-restauración-de-archivos-personales))
+    - [Google Drive](https://drive.google.com/file/d/1uQfxfVAUfBL3NWlBoJWtr2H3huRhxx07/view?usp=drive_link) en DocumentosPersonales de diegomarzafuertes@gmail.com
+
+    Se tiene de forma redundante pues es muy importante no perder esto, es para que git-crypt me reconozca.
 
     ```bash
     gpg --import-options restore --import private.gpg
     ```
 
-3.  **Clonar Repositorio Público**
+1.  **Clonar Repositorio Público**
     ```bash
     git clone github-diegomarzaa:diegomarzaa/setup.git ~/setup
     cd ~/setup
     ```
 
-4.  **Desbloquear Secretos**
+2.  **Desbloquear Secretos**
     ```bash
     git-crypt unlock
     ```
 
-5.  **Ejecutar el Instalador**
+3.  **Ejecutar el Instalador**
     ```bash
     ./install.sh
     ```
@@ -59,6 +63,7 @@ Ahora puedo copiar y pegar la carpeta setup/ desde la sd, ya que no está encrip
 2. **Desde la Nube (rclone)**
 
     - [ ] Pendiente, como 2a forma posible de precaución. Ver nota personal en obsidian.
+    - Solo está subida la carpeta setup con la clave para git-crypt y tal.
 
 ## Fase 3: Tareas Finales
 
