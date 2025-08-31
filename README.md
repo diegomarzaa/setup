@@ -4,12 +4,14 @@
 
 1.  **Instalar Dependencias Críticas**
     ```bash
-    sudo apt update && sudo apt install -y git gpg git-crypt stow restic
+    sudo apt update && sudo apt install -y git gpg git-crypt stow
     ```
 
+Ahora puedo copiar y pegar la carpeta setup/ desde la sd, ya que no está encriptada ni nada, y ya tener listo todo para el paso 5. de esta fase. O la opción más general y segura, que sería seguir desde el paso 2.
+
 2.  **Restaurar Clave GPG Privada**
-  
-    Desde un USB o disco duro, tenerlo redundante pues es muy importante no perder esto, es para que git-crypt me reconozca.
+
+    Desde la sd (directamente, en setup/) o disco duro (ver [Restauración de Archivos Personales](#fase-2-restauración-de-archivos-personales)), tenerlo redundante pues es muy importante no perder esto, es para que git-crypt me reconozca.
 
     ```bash
     gpg --import-options restore --import private.gpg
@@ -37,7 +39,7 @@
    
    Conectamos el disco duro, configuramos las variables de entorno para que sepa donde está el backup y la contraseña.
    ```bash
-
+   sudo apt-get install restic
    restic self-update
    restic version # restic 0.18.0 compiled with go1.24.1 on linux/amd64
    export RESTIC_REPOSITORY=/media/diego/Diego Hardrive/backup_ubuntu_2025
@@ -49,6 +51,9 @@
 
    # Opción 2: Directa
    restic restore latest --target /
+
+   # Extra: Montar disco para cosas rápidas
+   mkdir -p ~/mnt/restic & restic mount ~/mnt/restic
    ```
 
 2. **Desde la Nube (rclone)**
