@@ -3,7 +3,7 @@ set -e # Salir inmediatamente si un comando falla
 
 echo "🚀 Iniciando la configuración del nuevo sistema..."
 
-# PASO 0: Comprobar dependencias
+# PASO 1: Comprobar dependencias
 echo "🔎 Verificando dependencias (git, git-crypt, stow, zsh)..."
 for cmd in git git-crypt stow zsh; do
   if ! command -v $cmd &> /dev/null; then
@@ -12,13 +12,6 @@ for cmd in git git-crypt stow zsh; do
     exit 1
   fi
 done
-
-# PASO 1: Desbloquear secretos (El usuario debe hacer esto manualmente antes)
-if [ # TODO ??? ]; then
-    echo "⚠️  Advertencia: Los secretos no parecen estar desbloqueados."
-    echo "🗝️  Por favor, ejecuta 'git-crypt unlock' con tu clave antes de continuar."
-    read -p "Presiona Enter para continuar de todos modos, o Ctrl+C para cancelar."
-fi
 
 # PASO 2: Instalar todo el software
 echo "📦 Instalando paquetes y aplicaciones desde 'autosetup'..."
@@ -37,6 +30,10 @@ stow --verbose=2 -d ~/setup/dotfiles -t ~ argos bash dunst zsh
 # Stow para secretos
 echo "-> Aplicando configuraciones de 'secrets'..."
 stow --verbose=2 -d ~/setup/secrets -t ~ docker git gnupg kdeconnect rclone remmina ssh tailscale
+
+# PASO ZSH: 
+# Configurar Zsh y Zinit
+zsh -ic 'zinit self-update; zinit update; zinit cclear'
 
 # PASO 4: Aplicar configuración de GNOME
 echo "🎨 Cargando la configuración de GNOME..."
