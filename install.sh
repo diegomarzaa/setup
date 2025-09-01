@@ -33,6 +33,9 @@ stow --verbose=2 -d ~/setup/secrets -t ~ docker git gnupg kdeconnect rclone remm
 
 # PASO ZSH: 
 # Configurar Zsh y Zinit
+# Dotfiles ya cargados en el paso 3 (.zshrc y .p10k.zsh)
+# Necesario también descargar fuente de letra que soporte iconos (nerd fonts), y cargar
+# Una vez se entra en zsh y se cargan los plugins, p10k configure para configurar
 sudo apt install zsh fzf
 zsh -ic 'zinit self-update; zinit update; zinit cclear'
 

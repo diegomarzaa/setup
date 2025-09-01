@@ -58,7 +58,6 @@ zinit light Aloxaf/fzf-tab
 
 # Extra
 
-
 # ==============================================================================
 #                            ENVIRONMENT VARIABLES
 #
@@ -66,7 +65,7 @@ zinit light Aloxaf/fzf-tab
 # ==============================================================================
 
 # Set the default editor
-export EDITOR=gedit
+export EDITOR=nvim
 
 # Consolidated PATH modifications
 # The order is important: paths added first are checked first.
@@ -180,22 +179,6 @@ function cdd() {
     cd "$(zoxide query -i -- $@)" || return
 }
 
-# Find a directory with `fd` and `fzf`, then cd into it
-fdc() {
-    local dir
-    dir=$(fd --type d --hidden --follow --exclude .git | fzf) && cd "$dir"
-}
-
-# Find a file with `fd` and `fzf`, then open it with `xdg-open`
-fdo() {
-    local file
-    file=$(fd --type f --hidden --follow --exclude .git | fzf) && xdg-open "$file"
-}
-
-function j() {
-    cd "$(zoxide query -l | fzf)"
-}
-
 # ---------- ROS2 Environment Management ----------
 
 # Function to source the ROS2 environment and set up aliases/completions
@@ -267,8 +250,7 @@ if [[ $- == *i* && -z ${ZSH_MOTD_DISABLE:-} ]]; then
     local b='%B' n='%b' g='%F{244}' c='%F{81}' y='%F{220}' r='%F{203}' w='%F{255}' reset='%f%b'
     print -P ""
     print -P "${c}┏━━━━━━━━━━━━━━━━━━━━ ${b}Zsh Quick Help${n} ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${reset}"
-    print -P "${w}• Nav:${reset}  ${y}.. ... ....${reset}  ${g}cd <term>${reset} (zoxide jump)  ${g}j${reset} list  ${g}cdd${reset} fuzzy cd"
-    print -P "${w}• Find:${reset} ${g}ff <pat>${reset} files  ${g}fdc${reset} pick dir  ${g}fdo${reset} open file"
+    print -P "${w}• Nav:${reset}  ${y}.. ... ....${reset}  ${g}cdd${reset} fuzzy cd"
     print -P "${w}• Edit:${reset} ${g}Ctrl-X Ctrl-E${reset} edit current cmd in \$EDITOR"
     print -P "${w}• Files:${reset} ${g}extract <file>${reset} (zip, tar.gz, 7z, …)"
     print -P "${w}• ROS2:${reset} ${g}ros2s${reset} env; aliases: ${g}ros2src${reset}, ${g}src${reset}"
