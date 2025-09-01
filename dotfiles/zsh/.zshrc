@@ -70,15 +70,8 @@ export EDITOR=gedit
 
 # Consolidated PATH modifications
 # The order is important: paths added first are checked first.
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.npm-global/bin:$PATH"
-export PATH="$HOME/Documents/Matlab/bin:$PATH"
-export PATH="$HOME/.spicetify:$PATH"
-
-# CUDA for TensorFlow/ML
-export PATH="/usr/local/cuda-12.4/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH"
-
 
 # ==============================================================================
 #                            SHELL HISTORY
