@@ -93,7 +93,7 @@
             {
             "title": ".dotfiles (ask)",
             "icon": "text-x-script",
-            "command": "gnome-terminal -- bash -lc 'cd /home/diego/setup && /home/diego/.config/argos/scripts/gitsync-script.sh /home/diego/setup ask; exec bash'"
+            "command": "bash -lc 'cd /home/diego/setup && /home/diego/.config/argos/scripts/gitsync-script.sh /home/diego/setup ask; exec bash'"
             }
         ]
       },
