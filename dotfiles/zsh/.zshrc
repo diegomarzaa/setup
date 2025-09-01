@@ -102,6 +102,7 @@ setopt HIST_EXPIRE_DUPS_FIRST # Expire duplicates first when trimming history
 # General Zsh behavior enhancements.
 # ==============================================================================
 setopt AUTO_CD              # If you type a directory name, cd into it
+setopt interactive_comments  # Allow comments in interactive mode
 
 # ==============================================================================
 #                            ALIASES
