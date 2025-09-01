@@ -338,3 +338,6 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # [Improvement] Finalize Powerlevel10k. Recommended for instant prompt.
 (( ! ${+functions[p10k]} )) || p10k finalize
+
+# To customize prompt, run `p10k configure` or edit ~/setup/dotfiles/zsh/.p10k.zsh.
+[[ ! -f ~/setup/dotfiles/zsh/.p10k.zsh ]] || source ~/setup/dotfiles/zsh/.p10k.zsh
