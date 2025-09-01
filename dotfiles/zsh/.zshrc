@@ -103,23 +103,17 @@ setopt interactive_comments  # Allow comments in interactive mode
 # All command aliases are defined here.
 # ==============================================================================
 
-# --- Navigation ---
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-
-# General aliases
-alias fd="fdfind"
+alias python='python3'
+alias sbrc='source ~/.zshrc'
 alias c='clear'
 alias h='history'
-alias python='python3'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
 
-# Fast navigation aliases
-alias ff='fd --type f --hidden --follow --exclude .git'
-
-# Source external alias file if it exists
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.terminal_aliases ]; then
+    . ~/.terminal_aliases
 fi
 
 # ==============================================================================
