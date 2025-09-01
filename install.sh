@@ -33,6 +33,7 @@ stow --verbose=2 -d ~/setup/secrets -t ~ docker git gnupg kdeconnect rclone remm
 
 # PASO ZSH: 
 # Configurar Zsh y Zinit
+sudo apt install zsh fzf
 zsh -ic 'zinit self-update; zinit update; zinit cclear'
 
 # PASO 4: Aplicar configuración de GNOME

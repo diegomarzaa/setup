@@ -1,0 +1,199 @@
+[
+  {
+    "title": "Menu",
+    "icon": "~/.local/share/gnome-shell/extensions/command-menu2@goldentree1.github.com/icons/penguin.svg",
+    "position": "right",
+    "index": "auto",
+    "menu": [
+      {
+        "type": "label",
+        "title": "Applications",
+        "command": ""
+      },
+      {
+        "title": "Terminal",
+        "icon": "utilities-terminal-symbolic",
+        "command": "gnome-terminal"
+      },
+      {
+        "title": "Files",
+        "icon": "folder-symbolic",
+        "command": "nautilus"
+      },
+      {
+        "title": "Web Browser",
+        "icon": "web-browser-symbolic",
+        "command": "firefox"
+      },
+      {
+        "title": "Settings",
+        "icon": "preferences-system-symbolic",
+        "command": "gnome-control-center"
+      },
+      {
+        "type": "separator",
+        "title": "",
+        "command": ""
+      },
+      {
+        "type": "label",
+        "title": "Networking",
+        "command": ""
+      },
+      {
+        "type": "submenu",
+        "title": "SSH",
+        "icon": "network-workgroup",
+        "command": "",
+        "submenu": [
+          {
+            "title": "Connect to Server #1",
+            "command": "gnome-terminal -- bash -c 'ssh user@server1'"
+          },
+          {
+            "title": "Connect to Server #2",
+            "command": "gnome-terminal -- bash -c 'ssh user@server2'"
+          }
+        ]
+      },
+      {
+        "type": "submenu",
+        "title": "VPN",
+        "icon": "network-server",
+        "command": "",
+        "submenu": [
+          {
+            "title": "Connect to NordVPN",
+            "icon": "nordvpn-symbolic",
+            "command": "nordvpn connect"
+          },
+          {
+            "title": "Disconnect NordVPN",
+            "icon": "nordvpn-symbolic",
+            "command": "nordvpn disconnect"
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "title": "",
+        "command": ""
+      },
+      {
+        "type": "submenu",
+        "title": "Git Sync",
+        "icon": "system-software-update",
+        "command": "",
+        "submenu": [
+          {
+            "title": "Obsidian Notes (auto)",
+            "icon": "text-x-generic",
+            "command": "bash -lc 'cd /home/diego/Documents/Github/Personal/ObsidianNotes && /home/diego/.config/argos/scripts/gitsync-script.sh /home/diego/Documents/Github/Personal/ObsidianNotes auto'"
+          },
+            {
+            "title": ".dotfiles (ask)",
+            "icon": "text-x-script",
+            "command": "gnome-terminal -- bash -lc 'cd /home/diego/setup && /home/diego/.config/argos/scripts/gitsync-script.sh /home/diego/setup ask; exec bash'"
+            }
+        ]
+      },
+
+      { "type": "separator", "title": "", "command": "" },
+      { "type": "label", "title": "Backup & Drives", "command": "" },
+
+      {
+        "title": "Hardrive Backup",
+        "icon": "drive-harddisk",
+        "command": "gnome-terminal -- bash -lc '/home/diego/.config/argos/scripts/hardrive_backup.sh; exec bash'"
+      },
+
+      {
+        "type": "submenu",
+        "title": "Drive Sync",
+        "icon": "cloud",
+        "command": "",
+        "submenu": [
+          {
+            "title": "Dry-run Resync",
+            "icon": "system-run",
+            "command": "gnome-terminal -- bash -lc '/home/diego/.config/argos/scripts/drivesync-script.sh --dry-run --resync; exec bash'"
+          },
+          {
+            "title": "Full Resync",
+            "icon": "dialog-warning-symbolic",
+            "command": "gnome-terminal -- bash -lc '/home/diego/.config/argos/scripts/drivesync-script.sh --resync; exec bash'"
+          },
+          {
+            "title": "Normal Sync",
+            "icon": "emblem-default",
+            "command": "gnome-terminal -- bash -lc '/home/diego/.config/argos/scripts/drivesync-script.sh; exec bash'"
+          }
+        ]
+      },
+
+      {
+        "type": "submenu",
+        "title": "GDrive",
+        "icon": "folder-remote-symbolic",
+        "command": "",
+        "submenu": [
+          {
+            "title": "Mount GDrive",
+            "icon": "media-playback-start-symbolic",
+            "command": "bash -lc 'rclone mount gdrive: /home/diego/gdrive --vfs-cache-mode full --dir-cache-time 24h --poll-interval 15s --tpslimit 10 --daemon'"
+          },
+          {
+            "title": "Unmount GDrive",
+            "icon": "media-playback-stop-symbolic",
+            "command": "bash -lc 'fusermount -u /home/diego/gdrive'"
+          }
+        ]
+      },
+
+      { "type": "separator", "title": "", "command": "" },
+      { "type": "label", "title": "Tools", "command": "" },
+
+      {
+        "title": "Abrir Excalidraw",
+        "icon": "applications-graphics",
+        "command": "bash -lc 'xdg-open \"obsidian://adv-uri?vault=ObsidianNotes&commandid=obsidian-excalidraw-plugin%3Aexcalidraw-autocreate-popout\"'"
+      },
+      {
+        "title": "Simple Pomo",
+        "icon": "alarm-symbolic",
+        "command": "bash -lc 'nohup /home/diego/miniforge3/bin/python3 /home/diego/Documents/Proyectos/SimplePomo/__main__.py >/dev/null 2>&1 &'"
+      },
+      {
+        "title": "PDF to Obsidian (OCR)",
+        "icon": "application-pdf",
+        "command": "bash -lc 'nohup code /home/diego/Documents/Github/Professional/pdf-ocr-obsidian /home/diego/Documents/Github/Professional/pdf-ocr-obsidian/pdf-markdown-ocr.ipynb >/dev/null 2>&1 &'"
+      },
+      {
+        "title": "Obsidian to LaTeX",
+        "icon": "x-office-document",
+        "command": "gnome-terminal -- bash -lc '/home/diego/miniforge3/bin/python3 /home/diego/Downloads/latex-tests/script-python2.py; exec bash'"
+      },
+      {
+        "title": "Transcribir Audios",
+        "icon": "audio-input-microphone-symbolic",
+        "command": "gnome-terminal -- bash -lc '/home/diego/miniforge3/bin/python3 /home/diego/.config/argos/scripts/split_transcribe.py; exec bash'"
+      },
+
+      { "type": "separator", "title": "", "command": "" },
+      { "type": "label", "title": "Simple Apps", "command": "" },
+
+      {
+        "title": "Matlab",
+        "icon": "applications-science",
+        "command": "bash -lc 'nohup /home/diego/Documents/Matlab/bin/matlab -desktop >/dev/null 2>&1 &'"
+      },
+      {
+        "title": "MATLAB Connector",
+        "icon": "applications-science-symbolic",
+        "command": "bash -lc '/home/diego/bin/MATLABConnector toggle'"
+      }
+    ]
+  }
+]
+
+

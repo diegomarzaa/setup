@@ -23,7 +23,7 @@ Ahora puedo copiar y pegar la carpeta setup/ desde la sd, ya que no está encrip
 
 1.  **Clonar Repositorio Público**
     ```bash
-    git clone github-diegomarzaa:diegomarzaa/setup.git ~/setup
+    git clone https://github.com/diegomarzaa/setup.git ~/setup
     cd ~/setup
     ```
 
