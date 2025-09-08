@@ -103,7 +103,7 @@ setopt interactive_comments  # Allow comments in interactive mode
 # ==============================================================================
 
 alias python='python3'
-alias sbrc='source ~/.zshrc'
+alias szsh='source ~/.zshrc'
 alias c='clear'
 alias h='history'
 alias ...='cd ../../'

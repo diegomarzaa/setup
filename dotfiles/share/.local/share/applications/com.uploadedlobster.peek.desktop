@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Peek (X11)
+Exec=peek-x11 %U
+GenericName=Animated GIF recorder
+Comment=Record short animated GIF images from your screen
+Keywords=screencast;screen recorder;screen capture;GIF;WebM;APNG;
+# Icon=com.uploadedlobster.peek  # Se peta si se usa el putisimo icono
+Type=Application
+Categories=AudioVideo;Video;
+Terminal=false

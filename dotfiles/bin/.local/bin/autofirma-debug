@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Forzar tema claro GTK y usar la UI GTK3 de Java
+export GTK_THEME=Adwaita:light
+export JAVA_TOOL_OPTIONS="-Djdk.gtk.version=3 ${JAVA_TOOL_OPTIONS}"
+
+# Abrimos una terminal y ejecutamos el comando dentro
+gnome-terminal -- /usr/bin/autofirma "$@"

@@ -1,0 +1,24 @@
+[Desktop Entry]
+Name=Autofirma
+Name[es_ES]=Autofirma
+Name[en_US]=Autofirma
+Exec=/home/diego/.local/bin/autofirma %u
+TryExec=/usr/bin/autofirma %u
+Type=Application
+Terminal=false
+Icon=/usr/lib/Autofirma/Autofirma.png
+GenericName=Herramienta de firma
+MimeType=x-scheme-handler/afirma;
+StartupNotify=true
+StartupWMClass=autofirma
+
+# Lista de acciones disponibles en el menú de clic derecho
+Actions=Debug;Normal;
+
+[Desktop Action Debug]
+Name=Ejecutar en modo depuración
+Exec=/home/diego/.local/bin/autofirma-debug %u
+
+[Desktop Action Normal]
+Name=Ejecutar en modo normal
+Exec=/usr/bin/autofirma %u

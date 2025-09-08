@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=ChatGPT
+Exec=xdg-open https://chatgpt.com/
+Icon=/home/diego/.local/share/icons/chatgpt-logo.svg
+Terminal=false
+Type=Application
+Keywords=chatgpt;ai;gpt;openai;assistant;chat;bot;
