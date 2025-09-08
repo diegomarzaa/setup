@@ -255,6 +255,7 @@ if [[ $- == *i* && -z ${ZSH_MOTD_DISABLE:-} ]]; then
     print -P "${w}• Files:${reset} ${g}extract <file>${reset} (zip, tar.gz, 7z, …)"
     print -P "${w}• ROS2:${reset} ${g}ros2s${reset} env; aliases: ${g}ros2src${reset}, ${g}src${reset}"
     print -P "${w}• Prompt:${reset} ${g}p10k configure${reset}   ${w}Conda:${reset} ${g}conda activate <env>${reset}"
+    print -P "${w}• Shared terminal:${reset} ${g}sshx${reset}"
     print -P "${w}• Help:${reset} ${g}helpme${reset} show again"
     print -P "${c}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${reset}"
   }
