@@ -306,3 +306,12 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/setup/dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/setup/dotfiles/zsh/.p10k.zsh ]] || source ~/setup/dotfiles/zsh/.p10k.zsh
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/diego/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
